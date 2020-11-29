@@ -1,4 +1,6 @@
+from aiohttp import ClientSession
 from aiohttp.client_exceptions import ClientError
+import pytest
 
 
 class MockResponse:
@@ -17,3 +19,13 @@ class MockClientSession:
         if self.throw_error:
             raise ClientError
         return MockResponse(self.status_code)
+
+    async def close(self):
+        pass
+
+
+@pytest.fixture
+async def init_client():
+    client = ClientSession()
+    yield client
+    await client.close()
