@@ -23,7 +23,7 @@ async def open_client_session():
 
 
 @app.get('/healthz')
-async def healthz(host: str):
+async def healthz(hostname: str):
     """
     Returns:
         {
@@ -33,7 +33,7 @@ async def healthz(host: str):
     up: if the received host returns http status between 100 and 400.
     down: otherwise.
     """
-    result = await is_alive_host(host, app.client)
+    result = await is_alive_host(hostname, app.client)
     return {
         'status': app.healthz_returns[result],
     }
