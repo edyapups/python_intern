@@ -1,5 +1,5 @@
 import fastapi
-from app.utils import is_alive_host
+from .utils import is_alive_host
 from aiohttp import ClientSession
 
 
