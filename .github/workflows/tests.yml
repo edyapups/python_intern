@@ -1,6 +1,7 @@
-name: Testing python_intern
+name: Testing
 on:
-  push
+  push:
+    branches: [master]
 
 jobs:
   test:
